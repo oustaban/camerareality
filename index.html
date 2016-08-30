@@ -66,10 +66,7 @@
                                           };
                                           CanvasCamera.start(opt);
                                           
-                                          var options = {
-                                                frequency: 300
-                                          };
-                                          var watchID = navigator.compass.watchHeading(onSuccess, onError, options);
+                                          
                                       });
 
             function onChangeDevicePosition() {
@@ -85,6 +82,12 @@
                 }
                 //
                 CanvasCamera.setCameraPosition(newDevicePosition);
+                
+                var options = {
+                    frequency: 300
+                };
+                var watchID = navigator.compass.watchHeading(onSuccess, onError, options);
+                                          
             }
 
             function onChangeFlashMode() {
