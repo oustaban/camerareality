@@ -39,7 +39,10 @@
         </div>
 
     <!— camera preview canvas —>
-        <canvas id="camera" width="352" height="288" style="border:2px"></canvas>
+        <div id="layer" style="position:relative">
+        <canvas style="position:absolute; top:0px; left:0px" id="camera" width="352" height="288" style="border:2px"></canvas>
+        <img src="img/arrowleft.png" style="position:absolute; top:100px; left: 100px; z-index:10" />
+        </div>
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript">
