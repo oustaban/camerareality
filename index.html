@@ -66,8 +66,10 @@
                                               height:480
                                           };
                                           CanvasCamera.start(opt);
-                                          
-                                          navigator.compass.getCurrentHeading (compassSuccess, compassError);
+                                          var options = {
+                                                frequency: 100
+                                          };
+                                          var watchID = navigator.compass.watchHeading (compassSuccess, compassError, options) ;
                                       });
 
             function onChangeDevicePosition() {
@@ -112,9 +114,15 @@
                 //
             }
             
-            function onSuccess(heading) { $("#info").append('intitulé: "+ heading.magneticHeading);} ;
+            function onSuccess(heading) {
+                var element = document.getElementById('info') ;
+                element.innerHTML = "intitulé:" + heading.magneticHeading ;
+            }
 
-            function onError(error) {$("#info").append('CompassError: ' + error.code);} ;
+            function onError(compassError) {
+                var element = document.getElementById('info') ;
+                element.innerHTML = "erreur de boussole: "+ compassError.code);
+            }
         </script>
 
 </body>
