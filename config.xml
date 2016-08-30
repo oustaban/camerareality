@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0"
+        xmlns:gap="http://phonegap.com/ns/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id        = "com.cacf.cdispo"
+        versionCode = "100"
+        version   = "1.0">
+    <name>CDispo</name>
+
+    <description></description>
+
+    <author href="http://www.moonlikestudio.com" email="sleduc@moonlikestudio.com">
+        Sébastien Leduc
+    </author>
+
+    <preference name="phonegap-version" value="cli-5.2.0" />
+    <preference name="orientation"      value="landscape" />
+    <preference name="target-device"    value="universal" />
+    <preference name="fullscreen"       value="false" />
+    <preference name="stay-in-webview"  value="true" />
+    <preference name="disallowOverscroll" value="true" />
+	<preference name="webviewbounce" value="false" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="load-url-timeout" value="60000" />
+
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <preference name="iosPersistentFileLocation" value="Compatibility" />
+
+    <icon src="icon.png" />
+    
+    <icon src="assets/Android/res/drawable/icon.png" gap:platform="android" width="96" height="96" />
+	<icon src="assets/Android/res/drawable-ldpi/icon.png" gap:platform="android" width="36" height="36" />
+	<icon src="assets/Android/res/drawable-mdpi/icon.png" gap:platform="android" width="48" height="48" />
+	<icon src="assets/Android/res/drawable-hdpi/icon.png" gap:platform="android" width="72" height="72" />
+	<icon src="assets/Android/res/drawable-xhdpi/icon.png" gap:platform="android" width="96" height="96" />
+	<icon src="assets/Android/res/drawable-xxhdpi/icon.png" gap:platform="android" width="152" height="152" />
+	<icon src="assets/Android/res/drawable-xxxhdpi/icon.png" gap:platform="android" width="192" height="192" />
+
+
+	
+    <icon src="assets/iOS/Resources/icons/Icon-29.png" gap:platform="ios" width="29" height="29" />
+	<icon src="assets/iOS/Resources/icons/Icon.png" gap:platform="ios" width="57" height="57" />
+	<icon src="assets/iOS/Resources/icons/Icon@2x.png" gap:platform="ios" width="114" height="114" />
+	<icon src="assets/iOS/Resources/icons/Icon-40.png" gap:platform="ios" width="40" height="40" />
+	<icon src="assets/iOS/Resources/icons/Icon-40@2x.png" gap:platform="ios" width="80" height="80" />
+	<icon src="assets/iOS/Resources/icons/Icon-50.png" gap:platform="ios" width="50" height="50" />
+	<icon src="assets/iOS/Resources/icons/Icon-58.png" gap:platform="ios" width="58" height="58" />
+	<icon src="assets/iOS/Resources/icons/Icon-100.png" gap:platform="ios" width="100" height="100" />
+	<icon src="assets/iOS/Resources/icons/Icon-60.png" gap:platform="ios" width="60" height="60" />
+	<icon src="assets/iOS/Resources/icons/Icon-72.png" gap:platform="ios" width="72" height="72" />
+	<icon src="assets/iOS/Resources/icons/Icon-72@2x.png" gap:platform="ios" width="144" height="144" />
+	<icon src="assets/iOS/Resources/icons/Icon-76.png" gap:platform="ios" width="76" height="76" />
+	<icon src="assets/iOS/Resources/icons/Icon-80.png" gap:platform="ios" width="80" height="80" />
+	<icon src="assets/iOS/Resources/icons/Icon-120.png" gap:platform="ios" width="120" height="120" />
+	<icon src="assets/iOS/Resources/icons/Icon-152.png" gap:platform="ios" width="152" height="152" />
+	<icon src="assets/iOS/Resources/icons/Icon-180@3x.png" gap:platform="ios" width="180" height="180" />
+
+    <gap:splash src="assets/Android/res/drawable/screen.png" gap:platform="android" width="480" height="800"/>
+	<gap:splash src="assets/Android/res/drawable-land/screen.png" gap:platform="android" width="800" height="480"/>
+	<gap:splash src="assets/Android/res/drawable-ldpi/screen.png" gap:platform="android" width="200" height="320"/>
+	<gap:splash src="assets/Android/res/drawable-land-ldpi/screen.png" gap:platform="android" width="320" height="200"/>
+	<gap:splash src="assets/Android/res/drawable-mdpi/screen.png" gap:platform="android" width="320" height="480"/>
+	<gap:splash src="assets/Android/res/drawable-land-mdpi/screen.png" gap:platform="android" width="480" height="320"/>
+	<gap:splash src="assets/Android/res/drawable-hdpi/screen.png" gap:platform="android" width="480" height="800"/>
+	<gap:splash src="assets/Android/res/drawable-land-hdpi/screen.png" gap:platform="android" width="800" height="480"/>
+	<gap:splash src="assets/Android/res/drawable-xhdpi/screen.png" gap:platform="android" width="720" height="1280"/>
+	<gap:splash src="assets/Android/res/drawable-land-xhdpi/screen.png" gap:platform="android" width="1280" height="720"/>
+	<gap:splash src="assets/Android/res/drawable-xxhdpi/screen.png" gap:platform="android" width="960" height="1600"/>
+	<gap:splash src="assets/Android/res/drawable-land-xxhdpi/screen.png" gap:platform="android" width="1600" height="960"/>
+	<gap:splash src="assets/Android/res/drawable-xxxhdpi/screen.png" gap:platform="android" width="1280" height="1920"/>
+	<gap:splash src="assets/Android/res/drawable-land-xxxhdpi/screen.png" gap:platform="android" width="1920" height="1280"/>
+	
+    <gap:splash src="assets/iOS/Resources/splash/Default~iphone-portait.png" gap:platform="ios" width="320" height="480"/>
+	<gap:splash src="assets/iOS/Resources/splash/Default@2x~iphone_960x640.png" gap:platform="ios" width="640" height="960"/>
+    <gap:splash src="assets/iOS/Resources/splash/Default-568h@2x~iphone_1136x640.png" gap:platform="ios" width="640" height="1136"/>
+    <gap:splash src="assets/iOS/Resources/splash/Default-Landscape~ipad_1024x748.png" gap:platform="ios" width="1024" height="748"/>
+	<gap:splash src="assets/iOS/Resources/splash/Default-Landscape~ipad_1024x768.png" gap:platform="ios" width="1024" height="768"/>
+	<gap:splash src="assets/iOS/Resources/splash/Default-Landscape@2x~ipad_2048x1496.png" gap:platform="ios" width="2048" height="1496"/>
+	<gap:splash src="assets/iOS/Resources/splash/Default-Landscape@2x~ipad_2048x1536.png" gap:platform="ios" width="2048" height="1536"/>
+	<gap:splash src="assets/iOS/Resources/splash/Default~ipad.png" gap:platform="ios" width="1536" height="2008"/>
+	<gap:splash src="assets/iOS/Resources/splash/Default-Portrait@2x~ipad_1536x2048.png" gap:platform="ios" width="1536" height="2048"/>
+	<gap:splash src="assets/iOS/Resources/splash/Default-Portrait@2x~ipad_1536x2008.png" gap:platform="ios" width="1536" height="2008"/>
+	<gap:splash src="assets/iOS/Resources/splash/Default.png" gap:platform="ios" width="768" height="1004"/>
+	<gap:splash src="assets/iOS/Resources/splash/Default-Portrait~ipad_768x1024.png" gap:platform="ios" width="768" height="1024"/>
+	<gap:splash src="assets/iOS/Resources/splash/Default-750@2x~iphone6-portrait_750x1334.png" gap:platform="ios" width="750" height="1334"/>
+	<gap:splash src="assets/iOS/Resources/splash/Default-750@2x~iphone6-landscape_1334x750.png" gap:platform="ios" width="1334" height="750"/>
+	<gap:splash src="assets/iOS/Resources/splash/Default-1242@3x~iphone6s-portrait_1242x2208.png" gap:platform="ios" width="1242" height="2208"/>
+	<gap:splash src="assets/iOS/Resources/splash/Default-1242@3x~iphone6s-landscape_2208x1242.png" gap:platform="ios" width="2208" height="1242"/>
+    
+    
+    <gap:platform name="ios" />
+    <gap:platform name="android" />
+
+    <gap:plugin name="org.apache.cordova.inappbrowser" version="0.6.0" />
+    <gap:plugin name="org.apache.cordova.camera" />
+    <gap:plugin name="org.apache.cordova.media-capture" />
+    <gap:plugin name="org.apache.cordova.console" />
+    <gap:plugin name="org.apache.cordova.device" source="pgb" version="0.3.0" />
+    <gap:plugin name="org.apache.cordova.file" source="pgb" version="1.3.3" />
+    <gap:plugin name="org.apache.cordova.file-transfer" />
+    <gap:plugin name="org.apache.cordova.globalization" />
+    <gap:plugin name="org.apache.cordova.network-information" />
+    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <gap:plugin name="org.apache.cordova.statusbar" />
+    <gap:plugin name="org.chromium.zip" version="2.1.0" />
+    <plugin name="cordova-plugin-screen-orientation" spec="1.4.0" source="pgb" />
+	<plugin name="com.modaltech.cordova.plugin.canvascamera" spec="1.0" source="pgb" />
+    
+
+    <gap:plugin name="com.phonegap.plugins.pushplugin" source="pgb" version="2.5.0" />
+    <gap:plugin name="net.tunts.webintent" />
+    <gap:plugin name="nl.x-services.plugins.launchmyapp">
+        <param name="URL_SCHEME" value="inhni" />
+    </gap:plugin>
+    <gap:plugin name="com.ionic.keyboard" version="1.0.3" />
+    <gap:plugin name="ch.ti8m.documenthandler" version="0.2.1" />
+    <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" source="pgb" version="1.1.1" />
+
+    <gap:config-file platform="android" parent="/manifest">
+         <application android:debuggable="true" />
+    </gap:config-file>
+
+    <allow-navigation href="*" />
+    <!-- See MOBILE-892 -->
+    <preference name="permissions" value="none"/>
+
+    <gap:config-file platform="android" parent="/manifest" mode="delete">
+        <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+        <uses-permission android:name="android.permission.READ_CONTACTS" />
+        <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+        <uses-permission android:name="android.permission.VIBRATE"/>
+    </gap:config-file>
+
+    <gap:config-file platform="ios" parent="CFBundleDocumentTypes" mode="add">
+        <array>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>Unknown File</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>public.calendar-event</string>
+                  <string>public.database</string>
+                  <string>public.executable</string>
+                  <string>public.data</string>
+                  <string>public.content </string>
+                  <string>public.item</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>Video</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>public.video</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>Image</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>public.image</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>Web Archive</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>com.apple.webarchive</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>iWork Keynote</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>com.apple.keynote.key</string>
+                  <string>com.apple.iwork.keynote.key</string>
+                  <string>com.apple.iwork.keynote.kth</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>iWork Numbers</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>com.apple.numbers.numbers</string>
+                  <string>com.apple.iwork.numbers.numbers</string>
+                  <string>com.apple.iwork.numbers.template</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>iWork Pages</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>com.apple.page.pages</string>
+                  <string>com.apple.iwork.pages.pages</string>
+                  <string>com.apple.iwork.pages.template</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>OpenDocument Spreadsheet</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>org.oasis.opendocument.spreadsheet</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>OpenDocument Presentation</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>org.oasis.opendocument.presentation</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>OpenDocument Text</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>org.oasis.opendocument.text</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>Folder</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>public.folder</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>Audio</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>public.audio</string>
+                  <string>public.mp3</string>
+                  <string>public.mpeg-4-audio</string>
+                  <string>com.apple.protected-​mpeg-4-audio</string>
+                  <string>public.aifc-audio</string>
+                  <string>com.apple.coreaudio-​format</string>
+                  <string>public.aiff-audio</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>Movie</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>public.movie</string>
+                  <string>public.3gpp2</string>
+                  <string>public.3gpp</string>
+                  <string>public.mpeg</string>
+                  <string>com.apple.quicktime-movie</string>
+                  <string>public.mpeg-4</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>GIF image</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>com.compuserve.gif</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>PNG image</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>public.png</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>TIFF image</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>public.tiff</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>JPEG image</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>public.jpeg</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>XML</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>public.xml</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>HTML</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>public.html</string>
+                  <string>public.xhtml</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>Rich Text</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>public.rtf</string>
+                  <string>com.apple.rtfd</string>
+                  <string>com.apple.flat-rtfd</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>Text</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>public.text</string>
+                  <string>public.plain-text</string>
+                  <string>public.utf8-plain-text</string>
+                  <string>public.utf16-external-plain-​text</string>
+                  <string>public.utf16-plain-text</string>
+                  <string>com.apple.traditional-mac-​plain-text</string>
+                  <string>public.source-code</string>
+                  <string>public.c-source</string>
+                  <string>public.objective-c-source</string>
+                  <string>public.c-plus-plus-source</string>
+                  <string>public.objective-c-plus-​plus-source</string>
+                  <string>public.c-header</string>
+                  <string>public.c-plus-plus-header</string>
+                  <string>com.sun.java-source</string>
+                  <string>public.script</string>
+                  <string>public.shell-script</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeExtensions</key>
+                <array>
+                  <string>zip</string>
+                  <string>zipx</string>
+                </array>
+                <key>CFBundleTypeName</key>
+                <string>Zip archive</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>public.zip-archive</string>
+                  <string>public.archive</string>
+                  <string>com.pkware.zip-archive</string>
+                  <string>com.pkware.zipx-archive</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeExtensions</key>
+                <array>
+                  <string>rar</string>
+                  <string>RAR</string>
+                </array>
+                <key>CFBundleTypeName</key>
+                <string>Rar archive</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>com.rarlab.rar-archive</string>
+                  <string>public.archive</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeExtensions</key>
+                <array>
+                  <string>7z</string>
+                  <string>7Z</string>
+                </array>
+                <key>CFBundleTypeName</key>
+                <string>7z archive</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>org.7-zip.7-zip-archive</string>
+                  <string>public.archive</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>Waveform audio</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>com.microsoft.waveform-​audio</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>Windows icon image</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>com.microsoft.ico</string>
+                  <string>com.apple.icns</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>Windows bitmap image</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>com.microsoft.bmp</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>Microsoft PowerPoint</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>com.microsoft.powerpoint.​ppt</string>
+                  <string>org.openxmlformats.presentationml.presentation</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>Microsoft Excel</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>org.openxmlformats.spreadsheetml.sheet</string>
+                  <string>com.microsoft.excel.xls</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>Microsoft Word</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>com.microsoft.word.doc</string>
+                  <string>com.microsoft.word.wordml</string>
+                  <string>org.openxmlformats.wordprocessingml.document</string>
+                </array>
+            </dict>
+            <dict>
+                <key>CFBundleTypeName</key>
+                <string>PDF</string>
+                <key>LSHandlerRank</key>
+                <string>Alternate</string>
+                <key>LSItemContentTypes</key>
+                <array>
+                  <string>com.adobe.pdf</string>
+                </array>
+            </dict>
+        </array>
+    </gap:config-file>
+    
+    
+
+    <access origin="*" subdomains="true" />
+
+</widget>
