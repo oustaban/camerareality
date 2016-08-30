@@ -64,6 +64,11 @@
                                               height:480
                                           };
                                           CanvasCamera.start(opt);
+                                          
+                                          var options = {
+                                                frequency: 300
+                                          };
+                                          var watchID = navigator.compass.watchHeading(onSuccess, onError, options);
                                       });
 
             function onChangeDevicePosition() {
@@ -107,6 +112,16 @@
             function onTakeSuccess(data) {
                 //
             }
+            
+            function onSuccess(heading) {
+                var element = document.getElementById('info') ;
+                element.innerHTML = "intitulé:" + heading.magneticHeading ;
+            };
+            
+            function onError(compassError) {
+                console.log(' erreur de boussole: '+ compassError.code);
+            }
+            
         </script>
 
 </body>
