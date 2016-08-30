@@ -120,7 +120,7 @@
             function onSuccess(heading) {
                 console.log('bip');
                 var element = document.getElementById('info') ;
-                element.innerHTML = "intitulé:" + heading.magneticHeading ;
+                element.innerHTML = "intitulé:" + heading.magneticHeading +'/' + heading.trueHeading ;
             };
             
             function onError(compassError) {
