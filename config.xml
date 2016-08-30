@@ -3,10 +3,10 @@
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
         xmlns:gap="http://phonegap.com/ns/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id        = "com.cacf.cdispo"
+        id        = "com.moonlikestudio.camreality"
         versionCode = "100"
         version   = "1.0">
-    <name>CDispo</name>
+    <name>CAMRELAITY</name>
 
     <description></description>
 
