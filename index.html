@@ -169,8 +169,8 @@
             
             function onGpsSuccess(position) {
                         var element = document.getElementById('info3');
-                        //spot1.angle = getAngle(position.coords.latitude, position.coords.longitude, spot1.latitude, spot1.longitude);
-                        //spot1.distance = getDistance(position.coords.latitude, position.coords.longitude, spot1.latitude, spot1.longitude)
+                        spot1.angle = getAngle(position.coords.latitude, position.coords.longitude, spot1.latitude, spot1.longitude);
+                        spot1.distance = getDistance(position.coords.latitude, position.coords.longitude, spot1.latitude, spot1.longitude)
                         element.innerHTML = 'GPS: '  + spot1.angle + '<br>' + spot1.distance + '<br>' + position.coords.latitude + '<br>' + position.coords.longitude + '<br>' + position.coords.altitude + '<br>' + position.coords.accuracy + '<br>' + position.coords.altitudeAccuracy + '<br>' + position.coords.heading + '<br>' + position.coords.speed + '<br>' + position.timestamp;
                         
             }
