@@ -75,6 +75,23 @@
                         var watchID = navigator.compass.watchHeading(onSuccess, onError, options);
                        
             });
+            
+            document.addEventListener('deviceorientation', function(eventData) {
+                        // gamma is the left-to-right tilt in degrees, where right is positive
+                        var tiltLR = eventData.gamma;
+                        
+                        // beta is the front-to-back tilt in degrees, where front is positive
+                        var tiltFB = eventData.beta;
+                        
+                        // alpha is the compass direction the device is facing in degrees
+                        var dir = eventData.alpha
+                        
+                        // deviceorientation does not provide this data
+                        var motUD = null;
+                        
+                        // call our orientation event handler
+                        deviceOrientationHandler(tiltLR, tiltFB, dir, motUD);
+            });
 
             function onChangeDevicePosition() {
 
@@ -160,6 +177,10 @@
                         alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
             }
 
+            function deviceOrientationHandler(tiltLR, tiltFB, dir, motUD) {
+                console.log('deviceorientation');
+                console.log(tiltLR + '/' + tiltFB + '/' + dir + '/' + motUD);
+            }
             
         </script>
 
