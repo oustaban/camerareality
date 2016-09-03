@@ -43,6 +43,8 @@
         <canvas style="position:absolute; top:0px; left:0px" id="camera" width="352" height="288" style="border:2px"></canvas>
         <img src="img/arrowleft.png" style="position:absolute; top:100px; left: 100px; z-index:10" />
         <div id="info" style="position:absolute; top:100px; left: 200px; width:100px; height:20px; color:#000000; z-index:12"></div>
+        <div id="info2" style="position:absolute; top:200px; left: 200px; width:100px; height:20px; color:#000000; z-index:12"></div>
+        <div id="info3" style="position:absolute; top:300px; left: 200px; width:100px; height:20px; color:#000000; z-index:12"></div>
         </div>
 
         <script type="text/javascript" src="cordova.js"></script>
@@ -52,27 +54,35 @@
 
         <script>
             document.addEventListener("deviceready", function() {
-                                          canvasMain = document.getElementById("camera");
-                                          CanvasCamera.initialize(canvasMain);
-                                          // define options
-                                          var opt = {
-                                              quality: 75,
-                                              destinationType: CanvasCamera.DestinationType.DATA_URL,
-                                              encodingType: CanvasCamera.EncodingType.JPEG,
-                                              saveToPhotoAlbum:true,
-                                              correctOrientation:true,
-                                              width:640,
-                                              height:480
-                                          };
-                                          CanvasCamera.start(opt);
-                                          
-                                          var options = {
-                                                frequency: 300
-                                            };
-                                            var watchID = navigator.compass.watchHeading(onSuccess, onError, options);
-                                          
-                                          
-                                      });
+                        canvasMain = document.getElementById("camera");
+                        CanvasCamera.initialize(canvasMain);
+                        // define options
+                        var opt = {
+                            quality: 75,
+                            destinationType: CanvasCamera.DestinationType.DATA_URL,
+                            encodingType: CanvasCamera.EncodingType.JPEG,
+                            saveToPhotoAlbum:true,
+                            correctOrientation:true,
+                            width:640,
+                            height:480
+                        };
+                        CanvasCamera.start(opt);
+                        
+                        var options = {
+                              frequency: 300
+                        };
+                        var watchID = navigator.compass.watchHeading(onSuccess, onError, options);
+                        
+                        var optionsAcc = { frequency: 300 };  // Update every 3 seconds
+
+                        var watchID2 = navigator.accelerometer.watchAcceleration(onAccSuccess, onAccError, optionsAcc);
+                        
+                        var optionsGeo = { frequency: 300, enableHighAccuracy: true };  // Update every 3 seconds
+
+                        var watchID3 = navigator.geolocation.watchPosition(onGpsSuccess, onGpsError, optionsGeo);
+
+                        
+            });
 
             function onChangeDevicePosition() {
 
@@ -120,14 +130,34 @@
             }
             
             function onSuccess(heading) {
-                console.log('bip');
                 var element = document.getElementById('info') ;
-                element.innerHTML = "intitulé:" + heading.magneticHeading +'/' + heading.trueHeading ;
+                element.innerHTML = "Compass:" + heading.magneticHeading +'/' + heading.trueHeading ;
             };
             
             function onError(compassError) {
                 console.log(' erreur de boussole: '+ compassError.code);
             }
+            
+            function onAccSuccess(acceleration) {
+                        var element = document.getElementById('info2') ;
+                        element.innerHTML = "Accelorometer:" + acceleration.x + "/" + acceleration.y + "/" + acceleration.z + "/" + acceleration.timestamp
+            };
+            
+            function onGpsSuccess(position) {
+                        var element = document.getElementById('info3');
+                        element.innerHTML = 'GPS: '  + position.coords.latitude + '/' + position.coords.longitude + '/' + position.coords.altitude + '/' + position.coords.accuracy + '/' + position.coords.altitudeAccuracy + '/' + position.coords.heading + '/' + position.coords.speed + '/' + position.timestamp;
+                        
+            }
+                    
+            function onAccError(error) {
+                        alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+            }
+
+        
+            function onGpsError(error) {
+                        alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+            }
+
             
         </script>
 
