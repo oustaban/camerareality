@@ -75,14 +75,6 @@
                         
                         var watchID = navigator.compass.watchHeading(onCompassSuccess, onCompassError, optionsCompass);
                        
-                        var optionsAcc = { frequency: 300 };  // Update every 3 seconds
-
-                        var watchID2 = navigator.accelerometer.watchAcceleration(onAccSuccess, onAccError, optionsAcc);
-                        
-                        var optionsGeo = { frequency: 300 };  // Update every 3 seconds
-
-                        var watchID3 = navigator.geolocation.watchPosition(onGpsSuccess, onGpsError, optionsGeo);
-
                         var angleDevice = 0;
                         
                         var angleSpot1 = 0;
@@ -120,6 +112,16 @@
                 }
                 //
                 CanvasCamera.setCameraPosition(newDevicePosition);
+                
+                var optionsAcc = { frequency: 300 };  // Update every 3 seconds
+
+                        var watchID2 = navigator.accelerometer.watchAcceleration(onAccSuccess, onAccError, optionsAcc);
+                        
+                        var optionsGeo = { frequency: 300 };  // Update every 3 seconds
+
+                        var watchID3 = navigator.geolocation.watchPosition(onGpsSuccess, onGpsError, optionsGeo);
+
+                        
                                          
             }
 
