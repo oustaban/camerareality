@@ -68,11 +68,7 @@
                         };
                         CanvasCamera.start(opt);
                         
-                        var options = {
-                              frequency: 300
-                        };
-                        var watchID = navigator.compass.watchHeading(onSuccess, onError, options);
-                        
+                         
                         var optionsAcc = { frequency: 300 };  // Update every 3 seconds
 
                         var watchID2 = navigator.accelerometer.watchAcceleration(onAccSuccess, onAccError, optionsAcc);
@@ -81,7 +77,11 @@
 
                         var watchID3 = navigator.geolocation.watchPosition(onGpsSuccess, onGpsError, optionsGeo);
 
-                        
+                        var options = {
+                              frequency: 300
+                        };
+                        var watchID = navigator.compass.watchHeading(onSuccess, onError, options);
+                       
             });
 
             function onChangeDevicePosition() {
@@ -134,9 +134,7 @@
                 element.innerHTML = "Compass:" + heading.magneticHeading +'/' + heading.trueHeading ;
             };
             
-            function onError(compassError) {
-                console.log(' erreur de boussole: '+ compassError.code);
-            }
+            
             
             function onAccSuccess(acceleration) {
                         var element = document.getElementById('info2') ;
@@ -148,7 +146,11 @@
                         element.innerHTML = 'GPS: '  + position.coords.latitude + '/' + position.coords.longitude + '/' + position.coords.altitude + '/' + position.coords.accuracy + '/' + position.coords.altitudeAccuracy + '/' + position.coords.heading + '/' + position.coords.speed + '/' + position.timestamp;
                         
             }
-                    
+            
+            function onError(compassError) {
+                console.log(' erreur de boussole: '+ compassError.code);
+            }
+            
             function onAccError(error) {
                         alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
             }
