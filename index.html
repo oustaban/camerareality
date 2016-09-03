@@ -54,8 +54,10 @@
 
         <script>
             document.addEventListener("deviceready", function() {
+                        
                         canvasMain = document.getElementById("camera");
                         CanvasCamera.initialize(canvasMain);
+                        
                         // define options
                         var opt = {
                             quality: 75,
@@ -66,14 +68,26 @@
                             width:640,
                             height:480
                         };
-                        CanvasCamera.start(opt);
                         
+                        CanvasCamera.start(opt);
                          
-                        var options = {
-                              frequency: 300
-                        };
-                        var watchID = navigator.compass.watchHeading(onSuccess, onError, options);
+                        var optionsCompass = { frequency: 300 };
+                        
+                        var watchID = navigator.compass.watchHeading(onCompassSuccess, onCompassError, optionsCompass);
                        
+                        var optionsAcc = { frequency: 300 };  // Update every 3 seconds
+
+                        var watchID2 = navigator.accelerometer.watchAcceleration(onAccSuccess, onAccError, optionsAcc);
+                        
+                        var optionsGeo = { frequency: 300 };  // Update every 3 seconds
+
+                        var watchID3 = navigator.geolocation.watchPosition(onGpsSuccess, onGpsError, optionsGeo);
+
+                        var angleDevice = 0;
+                        
+                        var angleSpot1 = 0;
+                        
+                        var spot1 = {longitude : 2.3409156, latitude : 48.8867081, titre : 'Sacré Coeur', distance : 0, angle : 0, altitude : 124.973}
             });
             
             document.addEventListener('deviceorientation', function(eventData) {
@@ -106,17 +120,7 @@
                 }
                 //
                 CanvasCamera.setCameraPosition(newDevicePosition);
-                
-                var optionsAcc = { frequency: 300 };  // Update every 3 seconds
-
-                        var watchID2 = navigator.accelerometer.watchAcceleration(onAccSuccess, onAccError, optionsAcc);
-                        
-                        var optionsGeo = { frequency: 300 };  // Update every 3 seconds
-
-                        var watchID3 = navigator.geolocation.watchPosition(onGpsSuccess, onGpsError, optionsGeo);
-
-                        
-                                          
+                                         
             }
 
             function onChangeFlashMode() {
@@ -146,12 +150,12 @@
                 //
             }
             
-            function onSuccess(heading) {
-                var element = document.getElementById('info') ;
-                element.innerHTML = "Compass:" + heading.magneticHeading +'/' + heading.trueHeading ;
+            function onCompassSuccess(heading) {
+                        var element = document.getElementById('info') ;
+                        element.innerHTML = "Compass:" + heading.magneticHeading +'/' + heading.trueHeading ;
+                        
+                        angleDevice = headin.magneticHeading;
             };
-            
-            
             
             function onAccSuccess(acceleration) {
                         var element = document.getElementById('info2') ;
@@ -160,11 +164,13 @@
             
             function onGpsSuccess(position) {
                         var element = document.getElementById('info3');
-                        element.innerHTML = 'GPS: '  + position.coords.latitude + '<br>' + position.coords.longitude + '<br>' + position.coords.altitude + '<br>' + position.coords.accuracy + '<br>' + position.coords.altitudeAccuracy + '<br>' + position.coords.heading + '<br>' + position.coords.speed + '<br>' + position.timestamp;
+                        spot1.angle = getAngle(position.coords.latitude, position.coords.longitude, spot1.latitude, spot1.longitude);
+                        spot1.distance = getDistance(position.coords.latitude, position.coords.longitude, spot1.latitude, spot1.longitude)
+                        element.innerHTML = 'GPS: '  + spot1.angle + '<br>' + spot1.distance + '<br>' + position.coords.latitude + '<br>' + position.coords.longitude + '<br>' + position.coords.altitude + '<br>' + position.coords.accuracy + '<br>' + position.coords.altitudeAccuracy + '<br>' + position.coords.heading + '<br>' + position.coords.speed + '<br>' + position.timestamp;
                         
             }
             
-            function onError(compassError) {
+            function onCompassError(compassError) {
                 console.log(' erreur de boussole: '+ compassError.code);
             }
             
@@ -178,8 +184,39 @@
             }
 
             function deviceOrientationHandler(tiltLR, tiltFB, dir, motUD) {
-                console.log('deviceorientation');
-                console.log(tiltLR + '/' + tiltFB + '/' + dir + '/' + motUD);
+                        console.log('deviceorientation');
+                        console.log(tiltLR + '/' + tiltFB + '/' + dir + '/' + motUD);
+            }
+            
+            function getAngle(latitudeOrigine, longitudeOrigne, latitudeDest, longitudeDest) {
+                        
+                        var longDelta = longitudeDest - longitudeOrigne;
+                        var y = Math.sin(longDelta) * Math.cos(latitudeDest);
+                        var x = Math.cos(latitudeOrigine)*Math.sin(latitudeDest) - Math.sin(latitudeOrigine)*Math.cos(latitudeDest)*Math.cos(longDelta);
+                        var angle = Math.atan2(y, x) * (180 / Math.PI);
+                        while (angle < 0) {
+                            angle += 360;
+                        }
+                        
+                        return (float) angle % 360;
+            }
+            
+            function getDistance(lat_a, lon_a, lat_b, lon_b) 
+            {
+                        a = Math.PI / 180;
+                        lat1 = lat_a * a;
+                        lat2 = lat_b * a;
+                        lon1 = lon_a * a;
+                        lon2 = lon_b * a;
+                      
+                        t1 = Math.sin(lat1) * Math.sin(lat2);
+                        t2 = Math.cos(lat1) * Math.cos(lat2);
+                        t3 = Math.cos(lon1 - lon2);
+                        t4 = t2 * t3;
+                        t5 = t1 + t4;
+                        rad_dist = Math.atan(-t5/Math.sqrt(-t5 * t5 +1)) + 2 * Math.atan(1);
+                      
+                        return (rad_dist * 3437.74677 * 1.1508) * 1.6093470878864446;
             }
             
         </script>
