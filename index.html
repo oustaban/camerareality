@@ -69,14 +69,6 @@
                         CanvasCamera.start(opt);
                         
                          
-                        var optionsAcc = { frequency: 300 };  // Update every 3 seconds
-
-                        var watchID2 = navigator.accelerometer.watchAcceleration(onAccSuccess, onAccError, optionsAcc);
-                        
-                        var optionsGeo = { frequency: 300, enableHighAccuracy: true };  // Update every 3 seconds
-
-                        var watchID3 = navigator.geolocation.watchPosition(onGpsSuccess, onGpsError, optionsGeo);
-
                         var options = {
                               frequency: 300
                         };
@@ -98,7 +90,15 @@
                 //
                 CanvasCamera.setCameraPosition(newDevicePosition);
                 
-                
+                var optionsAcc = { frequency: 300 };  // Update every 3 seconds
+
+                        var watchID2 = navigator.accelerometer.watchAcceleration(onAccSuccess, onAccError, optionsAcc);
+                        
+                        var optionsGeo = { frequency: 300, enableHighAccuracy: true };  // Update every 3 seconds
+
+                        var watchID3 = navigator.geolocation.watchPosition(onGpsSuccess, onGpsError, optionsGeo);
+
+                        
                                           
             }
 
