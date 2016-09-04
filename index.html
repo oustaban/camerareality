@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title></title>
     <meta name="viewport" content="width=device-width">
+    <script src="lib/jquery.min.js"></script>
 </head>
 <body>
 <div class="app">
@@ -164,8 +165,7 @@
                         
                         angleDevice = heading.magneticHeading;
                         
-                        var element2 = document.getElementById('spot1');
-                        element2.x = - ((angleDevice - device_fox) * coefx) + device_width;
+                        $('#spot1').css('top',-((angleDevice - device_fov) * coefx) + device_width);
             };
             
             function onAccSuccess(acceleration) {
