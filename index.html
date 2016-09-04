@@ -161,11 +161,13 @@
             
             function onCompassSuccess(heading) {
                         var element = document.getElementById('info') ;
-                        element.innerHTML = "Compass:" + heading.magneticHeading +'/' + heading.trueHeading ;
                         
                         angleDevice = heading.magneticHeading;
+                        var newx = -((angleDevice - device_fov) * coefx) + device_width
+                        $('#spot1').css('left', newx);
                         
-                        $('#spot1').css('top',-((angleDevice - device_fov) * coefx) + device_width);
+                        element.innerHTML = "Compass:" + newx+ '/' + heading.magneticHeading +'/' + heading.trueHeading ;
+                        
             };
             
             function onAccSuccess(acceleration) {
