@@ -41,11 +41,11 @@
 
     <!— camera preview canvas —>
         <div id="layer" style="position:relative">
-        <canvas style="position:absolute; top:0px; left:0px" id="camera" width="352" height="288" style="border:2px"></canvas>
+        <canvas style="position:absolute; top:0px; left:0px" id="camera" width="960" height="640" style="border:2px"></canvas>
         <img src="img/arrowleft.png" id="spot1" style="position:absolute; top:100px; left: 100px; z-index:10" />
         <div id="info" style="position:absolute; top:10px; left: 100px; width:100px; height:20px; color:#000000; z-index:12"></div>
-        <div id="info2" style="position:absolute; top:100px; left: 100px; width:100px; height:20px; color:#000000; z-index:13"></div>
-        <div id="info3" style="position:absolute; top:200px; left: 100px; width:100px; height:20px; color:#000000; z-index:14"></div>
+        <div id="info2" style="position:absolute; top:100px; left: 200px; width:100px; height:20px; color:#000000; z-index:13"></div>
+        <div id="info3" style="position:absolute; top:200px; left: 300px; width:100px; height:20px; color:#000000; z-index:14"></div>
         </div>
 
         <script type="text/javascript" src="cordova.js"></script>
@@ -72,8 +72,8 @@
                             encodingType: CanvasCamera.EncodingType.JPEG,
                             saveToPhotoAlbum:true,
                             correctOrientation:true,
-                            width:640,
-                            height:480
+                            width:960,
+                            height:640
                         };
                         
                         CanvasCamera.start(opt);
