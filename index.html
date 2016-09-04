@@ -41,7 +41,7 @@
 
     <!— camera preview canvas —>
         <div id="layer" style="position:relative">
-        <canvas style="position:absolute; top:0px; left:0px" id="camera" width="960" height="640" style="border:2px"></canvas>
+        <canvas style="position:absolute; top:0px; left:0px" id="camera" width="352" height="288"></canvas>
         <img src="img/arrowleft.png" id="spot1" style="position:absolute; top:100px; left: 100px; z-index:10" />
         <div id="info" style="position:absolute; top:10px; left: 100px; width:100px; height:20px; color:#000000; z-index:12"></div>
         <div id="info2" style="position:absolute; top:100px; left: 200px; width:100px; height:20px; color:#000000; z-index:13"></div>
@@ -166,20 +166,20 @@
                         var newx = -((angleDevice - device_fov) * coefx) + device_width
                         $('#spot1').css('left', newx);
                         
-                        element.innerHTML = "Compass:" + newx+ '/' + heading.magneticHeading +'/' + heading.trueHeading ;
+                        //element.innerHTML = "Compass:" + newx+ '/' + heading.magneticHeading +'/' + heading.trueHeading ;
                         
             };
             
             function onAccSuccess(acceleration) {
                         var element = document.getElementById('info2') ;
-                        element.innerHTML = "Accelorometer:" + acceleration.x + "<br>" + acceleration.y + "<br>" + acceleration.z + "<br>" + acceleration.timestamp
+                        //element.innerHTML = "Accelorometer:" + acceleration.x + "<br>" + acceleration.y + "<br>" + acceleration.z + "<br>" + acceleration.timestamp
             };
             
             function onGpsSuccess(position) {
                         var element = document.getElementById('info3');
                         spot1.angle = getAngle(position.coords.latitude, position.coords.longitude, spot1.latitude, spot1.longitude);
                         spot1.distance = getDistance(position.coords.latitude, position.coords.longitude, spot1.latitude, spot1.longitude)
-                        element.innerHTML = 'GPS: '  + spot1.angle + '<br>' + spot1.distance + '<br>' + position.coords.latitude + '<br>' + position.coords.longitude + '<br>' + position.coords.altitude + '<br>' + position.coords.accuracy + '<br>' + position.coords.altitudeAccuracy + '<br>' + position.coords.heading + '<br>' + position.coords.speed + '<br>' + position.timestamp;
+                        //element.innerHTML = 'GPS: '  + spot1.angle + '<br>' + spot1.distance + '<br>' + position.coords.latitude + '<br>' + position.coords.longitude + '<br>' + position.coords.altitude + '<br>' + position.coords.accuracy + '<br>' + position.coords.altitudeAccuracy + '<br>' + position.coords.heading + '<br>' + position.coords.speed + '<br>' + position.timestamp;
                         
             }
             
@@ -210,7 +210,7 @@
                         while (angle < 0) {
                             angle += 360;
                         }
-                        console.log('getAngle:'+longDelta+'/'+y+'/'+x+'/'+angle);
+                        //console.log('getAngle:'+longDelta+'/'+y+'/'+x+'/'+angle);
                         return angle;
             }
             
