@@ -41,7 +41,7 @@
     <!— camera preview canvas —>
         <div id="layer" style="position:relative">
         <canvas style="position:absolute; top:0px; left:0px" id="camera" width="352" height="288" style="border:2px"></canvas>
-        <img src="img/arrowleft.png" style="position:absolute; top:100px; left: 100px; z-index:10" />
+        <img src="img/arrowleft.png" id="spot1" style="position:absolute; top:100px; left: 100px; z-index:10" />
         <div id="info" style="position:absolute; top:10px; left: 100px; width:100px; height:20px; color:#000000; z-index:12"></div>
         <div id="info2" style="position:absolute; top:100px; left: 100px; width:100px; height:20px; color:#000000; z-index:13"></div>
         <div id="info3" style="position:absolute; top:200px; left: 100px; width:100px; height:20px; color:#000000; z-index:14"></div>
@@ -55,6 +55,9 @@
         <script>
             
             var spot1 = {longitude : 2.3409156, latitude : 48.8867081, titre : 'Sacré Coeur', distance : 0, angle : 0, altitude : 124.973};
+            var device_fov = 54.9;
+            var device_width = 960;
+            var coefx = device_width / (2 * device_fov);
             
             document.addEventListener("deviceready", function() {
                         
@@ -160,6 +163,9 @@
                         element.innerHTML = "Compass:" + heading.magneticHeading +'/' + heading.trueHeading ;
                         
                         angleDevice = heading.magneticHeading;
+                        
+                        var element2 = document.getElementById('spot1');
+                        element2.x = - ((angleDevice - device_fox) * coefx) + device_width;
             };
             
             function onAccSuccess(acceleration) {
@@ -223,6 +229,10 @@
                       
                         return (rad_dist * 3437.74677 * 1.1508) * 1.6093470878864446;
             }
+            
+            //2*atan(4.592/(2*4.28))*180/pi = 56.423
+
+            //2*atan(3.450/(2*4.28))*180/pi = 43.903
             
         </script>
 
