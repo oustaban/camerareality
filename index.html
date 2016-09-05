@@ -38,10 +38,12 @@
 
 
         </div>
-
+        
+        <video autoplay></video>
+        
     <!— camera preview canvas —>
         <div id="layer" style="position:relative">
-        <canvas style="position:absolute; top:0px; left:0px" id="camera" width="352" height="288"></canvas>
+        <canvas style="position:absolute; top:0px; left:0px" id="camera" width="960" height="640"></canvas>
         <img src="img/arrowleft.png" id="spot1" style="position:absolute; top:100px; left: 100px; z-index:10" />
         <div id="info" style="position:absolute; top:10px; left: 100px; width:100px; height:20px; color:#000000; z-index:12"></div>
         <div id="info2" style="position:absolute; top:100px; left: 200px; width:100px; height:20px; color:#000000; z-index:13"></div>
@@ -63,19 +65,29 @@
             document.addEventListener("deviceready", function() {
                         
                         canvasMain = document.getElementById("camera");
-                        CanvasCamera.initialize(canvasMain);
                         
-                        // define options
-                        var opt = {
-                            quality: 75,
-                            saveToPhotoAlbum:false,
-                            correctOrientation:true,
-                            width:960,
-                            height:640
-                        };
                         
-                        CanvasCamera.start(opt);
+                        var onFailSoHard = function(e)
+                        {
+                                console.log('failed',e);
+                        }
+                    
+                        window.URL = window.URL || window.webkitURL ;
+                        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+                    
+                        var video = document.querySelector('video');
+                    
+                        if(navigator.getUserMedia)
+                        {
+                            navigator.getUserMedia({video: true},function(stream) {
+                            video.src = window.URL.createObjectURL(stream);
+                            },onFailSoHard);
+                        }
+                    
+                        var ctx = canvasMain.getContext('2d'); 
+                        ctx.drawImage(video,0,0); 
                          
+                        
                         var optionsCompass = { frequency: 300 };
                         
                         var watchID = navigator.compass.watchHeading(onCompassSuccess, onCompassError, optionsCompass);
