@@ -67,25 +67,7 @@
                         canvasMain = document.getElementById("camera");
                         
                         
-                        var onFailSoHard = function(e)
-                        {
-                                console.log('failed',e);
-                        }
-                    
-                        window.URL = window.URL || window.webkitURL ;
-                        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
-                    
-                        var video = document.querySelector('video');
-                    
-                        if(navigator.getUserMedia)
-                        {
-                            navigator.getUserMedia({video: true},function(stream) {
-                            video.src = window.URL.createObjectURL(stream);
-                            },onFailSoHard);
-                        }
-                    
-                        var ctx = canvasMain.getContext('2d'); 
-                        ctx.drawImage(video,0,0); 
+                        
                          
                         
                         var optionsCompass = { frequency: 300 };
@@ -127,9 +109,29 @@
                 {
                     newDevicePosition = CanvasCamera.CameraPosition.FRONT;
                 }
-                //
-                CanvasCamera.setCameraPosition(newDevicePosition);
                 
+                //CanvasCamera.setCameraPosition(newDevicePosition);
+                
+                        var onFailSoHard = function(e)
+                        {
+                                console.log('failed',e);
+                        }
+                    
+                        window.URL = window.URL || window.webkitURL ;
+                        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+                    
+                        var video = document.querySelector('video');
+                    
+                        if(navigator.getUserMedia)
+                        {
+                            console.log('check');
+                            navigator.getUserMedia({video: true},function(stream) {
+                            video.src = window.URL.createObjectURL(stream);
+                            },onFailSoHard);
+                        }
+                    
+                        var ctx = canvasMain.getContext('2d'); 
+                        ctx.drawImage(video,0,0); 
                 //var optionsAcc = { frequency: 300 };  // Update every 3 seconds
 
                         //var watchID2 = navigator.accelerometer.watchAcceleration(onAccSuccess, onAccError, optionsAcc);
