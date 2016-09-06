@@ -76,8 +76,17 @@
                         
                         //CanvasCamera.start(opt);
                         
-                        navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
+                        //navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
                         
+                        navigator.camera.getPicture(function(imagePath){
+                                    document.getElementById("camera").setAttribute("src", imagePath);
+                                }, function(){
+                                    alert("Photo cancelled");
+                                }, {
+                                    destinationType: navigator.camera.DestinationType.FILE_URI
+                                });
+
+
                         var optionsCompass = { frequency: 300 };
                         
                         var watchID = navigator.compass.watchHeading(onCompassSuccess, onCompassError, optionsCompass);
