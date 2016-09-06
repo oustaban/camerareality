@@ -111,7 +111,7 @@
 	<gap:plugin name="org.apache.cordova.device-motion" />
 	<gap:plugin name="org.apache.cordova.camera" />
 	<plugin name="cordova-plugin-media-capture" />
-	<gap:plugin name="cordova-plugin-camera-preview" />
+	
 	
     <gap:plugin name="com.phonegap.plugins.pushplugin" source="pgb" version="2.5.0" />
     <gap:plugin name="net.tunts.webintent" />
