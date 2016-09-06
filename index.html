@@ -39,6 +39,8 @@
 
         </div>
 
+            <video autoplay></video>
+
     <!— camera preview canvas —>
         <div id="layer" style="position:relative">
         <canvas style="position:absolute; top:0px; left:0px" id="camera" width="352" height="288"></canvas>
@@ -74,7 +76,30 @@
                             height:640
                         };
                         
-                        CanvasCamera.start(opt);
+                        //CanvasCamera.start(opt);
+                        
+                        var onFailSoHard = function(e)
+                        {
+                                console.log('failed',e);
+                        }
+                    
+                        window.URL = window.URL || window.webkitURL ;
+                        navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+                    
+                        var video = document.querySelector('video');
+                    
+                        if(navigator.getUserMedia)
+                        {
+                            navigator.getUserMedia({video: true},function(stream) {
+                            video.src = window.URL.createObjectURL(stream);
+                            var canvas = document.getElementById('camera'); 
+                            var ctx = canvas.getContext('2d'); 
+                            ctx.drawImage(video,0,0); 
+                            },onFailSoHard);
+                        } else {
+                                    console.log('failed');
+                        }
+                    
                         
                         //navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
                         /*
