@@ -67,17 +67,17 @@
                         
                         // define options
                         var opt = {
-                            quality: 75,
+                            quality: 5,
                             saveToPhotoAlbum:false,
                             correctOrientation:true,
                             width:960,
                             height:640
                         };
                         
-                        //CanvasCamera.start(opt);
+                        CanvasCamera.start(opt);
                         
                         //navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
-                        
+                        /*
                         navigator.camera.getPicture(function(imagePath){
                                     document.getElementById("camera").setAttribute("src", imagePath);
                                 }, function(){
@@ -85,7 +85,7 @@
                                 }, {
                                     destinationType: navigator.camera.DestinationType.FILE_URI
                                 });
-
+                        */
 
                         var optionsCompass = { frequency: 300 };
                         
