@@ -75,7 +75,12 @@
                         };
                         
                         //CanvasCamera.start(opt);
-                         
+                        
+                        navigator.camera.getPicture(onSuccess, onFail, { 
+                                    destinationType: Camera.DestinationType.FILE_URI
+                                    cameraDirection: Camera.Direction.FRONT // or Camera.Direction.BACK for back camera
+                        });
+                        
                         var optionsCompass = { frequency: 300 };
                         
                         var watchID = navigator.compass.watchHeading(onCompassSuccess, onCompassError, optionsCompass);
@@ -228,6 +233,16 @@
                         rad_dist = Math.atan(-t5/Math.sqrt(-t5 * t5 +1)) + 2 * Math.atan(1);
                       
                         return (rad_dist * 3437.74677 * 1.1508) * 1.6093470878864446;
+            }
+            
+            
+            function onSuccess(imageURI) {
+                        var image = document.getElementById('myImage');
+                        image.src = imageURI;
+            }
+                      
+            function onFail(message) {
+                        alert('Failed because: ' + message);
             }
             
             //2*atan(4.592/(2*4.28))*180/pi = 56.423

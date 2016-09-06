@@ -109,6 +109,7 @@
 	<plugin name="org.apache.cordova.device-orientation" spec="0.3.1" source="pgb" />
 	<gap:plugin name="org.apache.cordova.geolocation" />
 	<gap:plugin name="org.apache.cordova.device-motion" />
+	<gap:plugin name="org.apache.cordova.camera" />
 	
     <gap:plugin name="com.phonegap.plugins.pushplugin" source="pgb" version="2.5.0" />
     <gap:plugin name="net.tunts.webintent" />
