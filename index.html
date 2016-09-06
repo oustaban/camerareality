@@ -76,10 +76,7 @@
                         
                         //CanvasCamera.start(opt);
                         
-                        navigator.camera.getPicture(onSuccess, onFail, { 
-                                    destinationType: Camera.DestinationType.FILE_URI
-                                    cameraDirection: Camera.Direction.FRONT // or Camera.Direction.BACK for back camera
-                        });
+                        navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
                         
                         var optionsCompass = { frequency: 300 };
                         
@@ -236,13 +233,17 @@
             }
             
             
-            function onSuccess(imageURI) {
-                        var image = document.getElementById('myImage');
-                        image.src = imageURI;
+            function captureError(e) {
+                        console.log("capture error: "+JSON.stringify(e));
             }
-                      
-            function onFail(message) {
-                        alert('Failed because: ' + message);
+        
+            function captureSuccess(s) {
+                        console.log("Success");
+                        console.dir(s[0]);
+                        var v = "<video controls='controls'>";
+                        v += "<source src='" + s[0].fullPath + "' type='video/mp4'>";
+                        v += "</video>";
+                        document.querySelector("#camera").innerHTML = v;
             }
             
             //2*atan(4.592/(2*4.28))*180/pi = 56.423
